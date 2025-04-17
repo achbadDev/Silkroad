@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog & Actualités - Silkroad</title>
+  <meta name="description" content="Retrouvez toutes les actualités de la plateforme Silkroad : mises à jour, innovations IA, optimisation du transport routier et plus encore." />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style1.css">
+<script defer src="script.js"></script>
+
+</head>
+<body>
+  <section class="features" id="blog">
+    <div class="section-title">
+      <h2>Nos Dernières Actualités</h2>
+      <p>Les nouveautés technologiques, partenariats et innovations IA de Silkroad</p>
+    </div>
+    <div id="blog-posts" class="features-container"></div>
+  </section>
+
+
+  <script>
+    const posts = [
+      {
+        title: "NOUVELLE MISE À JOUR : Silkroad passe à la vitesse supérieure !",
+        date: "17 avril 2025",
+        content: "Nous sommes ravis de vous annoncer la dernière mise à jour de notre application Silkroad ! Parmi les nouveautés : un tout nouvel algorithme d'optimisation des trajets, un système d'alerte intelligente pour la maintenance, ainsi qu'une IA prédictive capable d'anticiper les délais et les pannes. Avec ces outils, notre objectif est de réduire les coûts d'exploitation jusqu'à 30% tout en améliorant la satisfaction client."
+      },
+      {
+        title: "Comment notre IA révolutionne la logistique",
+        date: "10 avril 2025",
+        content: "L'intelligence artificielle est au coeur de notre stratégie. Grâce à notre moteur Silkroad-AI, chaque transport est analysé en temps réel pour proposer l'itinéraire le plus rapide et le plus économe. De plus, notre IA est capable de prédire les zones de congestion, les besoins de maintenance et les tendances de consommation de carburant."
+      },
+      {
+        title: "Tendances 2025 : Le futur du transport routier au Maroc",
+        date: "2 avril 2025",
+        content: "Le secteur du transport au Maroc connaît une digitalisation rapide. Silkroad accompagne cette transition grâce à des outils intelligents, permettant une traçabilité complète, des économies significatives et un impact environnemental réduit."
+      },
+      {
+        title: "Transport Écologique : Les nouvelles normes en 2025",
+        date: "28 mars 2025",
+        content: "Avec la montée des préoccupations environnementales, Silkroad intègre désormais des modules d’analyse de l’empreinte carbone et propose des itinéraires verts qui favorisent les économies de carburant tout en réduisant les émissions."
+      },
+      {
+        title: "Sécurité numérique : Silkroad renforce sa cybersécurité",
+        date: "20 mars 2025",
+        content: "Face aux nouvelles menaces numériques, notre équipe a déployé un système de protection renforcé basé sur l’IA pour garantir la confidentialité des données clients et des opérations de transport."
+      },
+      {
+        title: "Silkroad participe au Salon International du Transport",
+        date: "12 mars 2025",
+        content: "Lors du dernier salon de Casablanca, Silkroad a présenté ses innovations IA devant des centaines de professionnels. Une reconnaissance nationale pour notre technologie Made in Morocco."
+      }
+    ];
+
+    const container = document.getElementById("blog-posts");
+    posts.forEach(post => {
+      const postEl = document.createElement("div");
+      postEl.className = "feature-card";
+      postEl.innerHTML = `
+        <h3>${post.title}</h3>
+        <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem;">${post.date}</p>
+        <p>${post.content}</p>
+        <a href="ARTICLES/article_1.html" class="btn btn-primary">Lire l’article complet</a>
+      `;
+      container.appendChild(postEl);
+    });
+
+    
+  </script>
+</body>
+</html>
