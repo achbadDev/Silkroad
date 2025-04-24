@@ -5,73 +5,463 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog & Actualités - Silkroad</title>
   <meta name="description" content="Retrouvez toutes les actualités de la plateforme Silkroad : mises à jour, innovations IA, optimisation du transport routier et plus encore." />
-  <link rel="stylesheet" href="style.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Main CSS -->
   <link rel="stylesheet" href="style1.css">
-<script defer src="script.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="script.js"></script>
+  <style>
+    :root {
+      --primary-color: #4a6bff;
+      --secondary-color: #ff6b6b;
+      --dark-color: #2c3e50;
+      --light-color: #f8f9fa;
+      --text-color: #333;
+      --text-light: #777;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+      background-color: #f5f7ff;
+      line-height: 1.6;
+      
+    }
+     
+    
+    
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    
+    .section-title h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      color: var(--dark-color);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--secondary-color);
+      border-radius: 2px;
+    }
+    
+    .section-title p {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .blog-container {
+      min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 5% 5rem;
+            position: relative;
+            overflow: hidden;
+     
+    }
+    
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      padding: 0 2rem;
+    }
+    
+    .blog-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+    
+    .blog-card-img {
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .blog-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .blog-card:hover .blog-card-img img {
+      transform: scale(1.05);
+    }
+    
+    .blog-card-date {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: var(--primary-color);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 1;
+    }
+    
+    .blog-card-content {
+      padding: 1.5rem;
+    }
+    
+    .blog-card-content h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--dark-color);
+    }
+    
+    .blog-card-content p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .blog-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+    }
+    
+    .read-more {
+      display: inline-block;
+      color: var(--primary-color);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .read-more:hover {
+      color: var(--secondary-color);
+    }
+    
+    .read-more i {
+      margin-left: 5px;
+      transition: transform 0.3s ease;
+    }
+    
+    .read-more:hover i {
+      transform: translateX(5px);
+    }
+    
+    .category-badge {
+      background: #f0f4ff;
+      color: var(--primary-color);
+      padding: 0.3rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .newsletter-section {
+      background: linear-gradient(135deg, #f5f7ff, #e6e9ff);
+      padding: 4rem 0;
+      margin: 3rem 0;
+      text-align: center;
+    }
+    
+    .newsletter-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      margin-top: 2rem;
+    }
+    
+    .newsletter-form input {
+      flex: 1;
+      padding: 1rem;
+      border: none;
+      border-radius: 50px 0 0 50px;
+      font-size: 1rem;
+      outline: none;
+    }
+    
+    .newsletter-form button {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0 2rem;
+      border-radius: 0 50px 50px 0;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    
+    .newsletter-form button:hover {
+      background: #3a5bef;
+    }
+    
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem;
+      gap: 0.5rem;
+    }
+    
+    .pagination a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      border-radius: 50%;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .pagination a:hover, .pagination a.active {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .blog-header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .blog-header p {
+        font-size: 1rem;
+        padding: 0 1rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .blog-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      .newsletter-form input {
+        border-radius: 50px;
+        margin-bottom: 1rem;
+      }
+      
+      .newsletter-form button {
+        border-radius: 50px;
+        padding: 1rem;
+      }
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
 
+    
+  </style>
 </head>
+
 <body>
-  <section class="features" id="blog">
-    <div class="section-title">
-      <h2>Nos Dernières Actualités</h2>
-      <p>Les nouveautés technologiques, partenariats et innovations IA de Silkroad</p>
+  <!-- Header -->
+ <div>
+  
+ </div>
+
+  <!-- Blog Section -->
+  <section class="blog-container">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Nos Dernières Actualités</h2>
+        <p>Les nouveautés technologiques, partenariats et innovations IA de Silkroad</p>
+      </div>
+      
+      <div class="blog-grid" id="blog-posts">
+        <!-- Articles will be inserted here by JavaScript -->
+      </div>
+      
+      <div class="pagination" data-aos="fade-up">
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#"><i class="fas fa-chevron-right"></i></a>
+      </div>
     </div>
-    <div id="blog-posts" class="features-container"></div>
+  </section>
+  
+  <!-- Newsletter Section -->
+  <section class="newsletter-section" data-aos="fade-up">
+    <div class="newsletter-container">
+      <h2>Restez informés</h2>
+      <p>Abonnez-vous à notre newsletter pour recevoir les dernières actualités directement dans votre boîte mail</p>
+      
+      <form class="newsletter-form">
+        <input type="email" placeholder="Votre adresse email" required>
+        <button type="submit">S'abonner <i class="fas fa-paper-plane"></i></button>
+      </form>
+    </div>
   </section>
 
-
+  <!-- Scripts -->
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <!-- AOS (Animate On Scroll) -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
   <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+    
+    // Blog posts data
     const posts = [
       {
         title: "NOUVELLE MISE À JOUR : Silkroad passe à la vitesse supérieure !",
         date: "17 avril 2025",
-        content: "Nous sommes ravis de vous annoncer la dernière mise à jour de notre application Silkroad ! Parmi les nouveautés : un tout nouvel algorithme d'optimisation des trajets, un système d'alerte intelligente pour la maintenance, ainsi qu'une IA prédictive capable d'anticiper les délais et les pannes. Avec ces outils, notre objectif est de réduire les coûts d'exploitation jusqu'à 30% tout en améliorant la satisfaction client."
+        content: "Nous sommes ravis de vous annoncer la dernière mise à jour de notre application Silkroad ! Parmi les nouveautés : un tout nouvel algorithme d'optimisation des trajets, un système d'alerte intelligente pour la maintenance, ainsi qu'une IA prédictive capable d'anticiper les délais et les pannes.",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        category: "Technologie"
       },
       {
         title: "Comment notre IA révolutionne la logistique",
         date: "10 avril 2025",
-        content: "L'intelligence artificielle est au coeur de notre stratégie. Grâce à notre moteur Silkroad-AI, chaque transport est analysé en temps réel pour proposer l'itinéraire le plus rapide et le plus économe. De plus, notre IA est capable de prédire les zones de congestion, les besoins de maintenance et les tendances de consommation de carburant."
+        content: "L'intelligence artificielle est au coeur de notre stratégie. Grâce à notre moteur Silkroad-AI, chaque transport est analysé en temps réel pour proposer l'itinéraire le plus rapide et le plus économe.",
+        image: "https://images.unsplash.com/photo-1677442135136-760c813a743d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        category: "IA"
       },
       {
         title: "Tendances 2025 : Le futur du transport routier au Maroc",
         date: "2 avril 2025",
-        content: "Le secteur du transport au Maroc connaît une digitalisation rapide. Silkroad accompagne cette transition grâce à des outils intelligents, permettant une traçabilité complète, des économies significatives et un impact environnemental réduit."
+        content: "Le secteur du transport au Maroc connaît une digitalisation rapide. Silkroad accompagne cette transition grâce à des outils intelligents, permettant une traçabilité complète et des économies significatives.",
+        image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        category: "Tendances"
       },
       {
         title: "Transport Écologique : Les nouvelles normes en 2025",
         date: "28 mars 2025",
-        content: "Avec la montée des préoccupations environnementales, Silkroad intègre désormais des modules d’analyse de l’empreinte carbone et propose des itinéraires verts qui favorisent les économies de carburant tout en réduisant les émissions."
+        content: "Avec la montée des préoccupations environnementales, Silkroad intègre désormais des modules d'analyse de l'empreinte carbone et propose des itinéraires verts qui favorisent les économies de carburant.",
+        image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        category: "Écologie"
       },
       {
         title: "Sécurité numérique : Silkroad renforce sa cybersécurité",
         date: "20 mars 2025",
-        content: "Face aux nouvelles menaces numériques, notre équipe a déployé un système de protection renforcé basé sur l’IA pour garantir la confidentialité des données clients et des opérations de transport."
+        content: "Face aux nouvelles menaces numériques, notre équipe a déployé un système de protection renforcé basé sur l'IA pour garantir la confidentialité des données clients et des opérations de transport.",
+        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        category: "Sécurité"
       },
       {
         title: "Silkroad participe au Salon International du Transport",
         date: "12 mars 2025",
-        content: "Lors du dernier salon de Casablanca, Silkroad a présenté ses innovations IA devant des centaines de professionnels. Une reconnaissance nationale pour notre technologie Made in Morocco."
+        content: "Lors du dernier salon de Casablanca, Silkroad a présenté ses innovations IA devant des centaines de professionnels. Une reconnaissance nationale pour notre technologie Made in Morocco.",
+        image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        category: "Événement"
       }
     ];
 
-    const container = document.getElementById("blog-posts");
-    posts.forEach(post => {
-      const postEl = document.createElement("div");
-      postEl.className = "feature-card";
-      postEl.innerHTML = `
-        <h3>${post.title}</h3>
-        <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem;">${post.date}</p>
-        <p>${post.content}</p>
-        <a href="ARTICLES/article_1.html" class="btn btn-primary">Lire l’article complet</a>
-      `;
-      container.appendChild(postEl);
-    });
-
+    // Function to generate blog cards
+    function generateBlogCards() {
+      const container = document.getElementById("blog-posts");
+      
+      posts.forEach((post, index) => {
+        const card = document.createElement("div");
+        card.className = "blog-card";
+        card.setAttribute("data-aos", "fade-up");
+        card.setAttribute("data-aos-delay", `${index * 100}`);
+        
+        card.innerHTML = `
+          <div class="blog-card-img">
+            <span class="blog-card-date">${post.date}</span>
+            <img src="${post.image}" alt="${post.title}">
+          </div>
+          <div class="blog-card-content">
+            <span class="category-badge">${post.category}</span>
+            <h3>${post.title}</h3>
+            <p>${post.content}</p>
+            <div class="blog-card-footer">
+              <a href="ARTICLES/article_${index + 1}.html" class="read-more">Lire plus <i class="fas fa-arrow-right"></i></a>
+              <span><i class="far fa-clock"></i> 5 min de lecture</span>
+            </div>
+          </div>
+        `;
+        
+        container.appendChild(card);
+      });
+    }
     
+    // Generate cards when DOM is loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      generateBlogCards();
+      
+      // Add hover effect to blog cards
+      const blogCards = document.querySelectorAll(".blog-card");
+      blogCards.forEach(card => {
+        card.addEventListener("mouseenter", function() {
+          this.querySelector(".read-more i").style.transform = "translateX(5px)";
+        });
+        
+        card.addEventListener("mouseleave", function() {
+          this.querySelector(".read-more i").style.transform = "translateX(0)";
+        });
+      });
+    });
   </script>
 </body>
 </html>
